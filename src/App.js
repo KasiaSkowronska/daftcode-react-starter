@@ -8,21 +8,21 @@ import Counter from './components/counter';
 class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   state = {
-    isCountdownCompleted: false,
+    success: false,
   }
 
 
   timerSuccess() {
-    this.setState(() => ({ isCountdownCompleted: true }));
+    this.setState(() => ({ success: true }));
     // console.log("Koniec odliczania");
   }
 
   resetTimer() {
-    this.setState(() => ({ isCountdownCompleted: false }));
+    this.setState(() => ({ success: false }));
   }
 
   render() {
-    const { isCountdownCompleted } = this.state;
+    const { success } = this.state;
     const successBoxStyle = {
       display: 'flex',
       alignItems: 'center',
@@ -44,7 +44,7 @@ class App extends React.Component { // eslint-disable-line react/prefer-stateles
           onSuccess={() => this.timerSuccess()}
           onReset={() => this.resetTimer()}
         />
-        {isCountdownCompleted && <div style={successBoxStyle} >koniec</div>}
+        {success && <div style={successBoxStyle} >koniec</div>}
       </main>
     );
   }
